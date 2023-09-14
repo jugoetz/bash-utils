@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# expects one argument: the email to send the alert to
+
+nq -w && { printf '%s\n' "To: $1" "Subject: Job finished on $(hostname)" 'Content-Type: text/html'; echo "Your job has completed"; } | sendmail -t &
