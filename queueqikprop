@@ -10,9 +10,9 @@ SCHRODINGER=/opt/schrodinger/suites2023-2
 WORKDIR=/Users/julian/SciAdv\ revisions/qikprop_out
 nJobs=$("$SCHRODINGER/jobcontrol" -list | wc -l) || exit 1
 
-if [ "$nJobs" -lt 34 ]
+if [ "$nJobs" -lt 17 ]
 then
-    for ((i=0; i<=10; i++))
+    for ((i=0; i<5; i++))
     do
         nextFile=$(head -1 "$WORKDIR/queue.txt")  || exit 1
         $SCHRODINGER/qikprop -fast -nosim -nosa "$WORKDIR/../ligprep_out/${nextFile}.mae" || exit 1
