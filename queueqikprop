@@ -10,7 +10,7 @@ SCHRODINGER=/opt/schrodinger/suites2023-2
 WORKDIR=/Users/julian/SciAdv\ revisions/qikprop_out
 nJobs=$("$SCHRODINGER/jobcontrol" -list | wc -l) || exit 1
 
-if [ "$nJobs" -lt 17 ]
+if [ "$nJobs" -lt 19 ]
 then
     for ((i=0; i<5; i++))
     do
