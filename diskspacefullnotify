@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# Send an email notification if disk usage exceeds a threshold
+# Expects one argument: the email to send the alert to
+# To adapt to other systems, you will need to change the device that grep looks for
+
+diskusage=$(df -h | grep '/dev/sda5' | awk '{print $5}')
+
+if (( $(echo $diskusage | tr -d '%') > 95 ));
+    then { printf '%s\n' "To: $1" "Subject: Disk almost full on $(hostname)" 'Content-Type: text/html'; echo "Disk usage is now at $diskusage"; } | /usr/sbin/sendmail -t;
+fi
+
